@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version "$spring_boot_version"
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'idea'
+// 	id 'nebula.lint' version '18.0.3'
+}
+
+// apply plugin :"nebula.lint"
+// gradleLint.rules=['unused-dependency']
+
+group = 'com.tak'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+	implementation 'io.netty:netty-all:'+netty_version
+	implementation 'com.alibaba:fastjson:2.0.32'
+	implementation 'com.alibaba.fastjson2:fastjson2:2.0.32'
+    implementation 'com.google.code.gson:gson:2.10.1'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'com.sun.xml.ws:jaxws-rt:2.3.1'
+    implementation 'joda-time:joda-time:2.12.5'
+    implementation 'cn.hutool:hutool-http:5.8.18'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'net.sf.geographiclib:GeographicLib-Java:2.0'
+
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
