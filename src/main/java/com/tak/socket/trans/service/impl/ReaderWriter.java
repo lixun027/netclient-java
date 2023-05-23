@@ -70,7 +70,7 @@ public class ReaderWriter {
 					droneIdStr.append("<point lat='0' lon='0' hae='9999999' ce='9999999' le='9999999'/>");
 					droneIdStr.append("<detail>");
 					droneIdStr.append("<ext>");
-					droneIdStr.append(JSON.toJSONString(data));
+					droneIdStr.append(data);
 					droneIdStr.append("</ext>");
 					droneIdStr.append("</detail>");
 					droneIdStr.append("</event>");
@@ -135,7 +135,7 @@ public class ReaderWriter {
 						CotEvent cotEvents = dropDownReceiverTransService.transPostureService(data, response);
 						String cotEventStr = XmlUtil.toStr(cotEvents);
 						try {
-							System.err.println("地雷图形 = " + cotEventStr);
+							System.err.println("雷达扫描图形 = " + cotEventStr);
 							cotEventQueue.put(cotEventStr);
 						} catch (InterruptedException e) {
 							throw new RuntimeException(e);
